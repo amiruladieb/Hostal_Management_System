@@ -1,3 +1,5 @@
+import java.sql.*;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -47,6 +49,11 @@ public class LogIn extends javax.swing.JFrame {
         jLabel2.setText("Password");
 
         logInButton.setText("LogIn");
+        logInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logInButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Hostel Management System");
@@ -118,6 +125,30 @@ public class LogIn extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
+        // TODO add your handling code here:
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from student where username='"+username+"' and password='"+password+"'");
+            if (rs.next()) {
+                setVisible(false);
+                new Home().setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Wrong password");
+            }
+        }
+        catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error in Connection");
+        }
+    }//GEN-LAST:event_logInButtonActionPerformed
 
     /**
      * @param args the command line arguments
