@@ -177,8 +177,12 @@ public class registration extends javax.swing.JFrame {
             Statement st = con.createStatement();
             st.executeUpdate("insert into student (username, name, mobileno, password, email, securityQ, answer) values('"+username+"','"+name+"','"+mobileno+"','"+password+"','"+email+"','"+securityQ+"','"+answer+"')");
             JOptionPane.showMessageDialog(null, "Thanks for registration");
+            setVisible(false);
+            new LogIn().setVisible(true);
         }
-        catch (Exception e) {}
+        catch (Exception e) {
+            
+        }
     }//GEN-LAST:event_createButtonActionPerformed
 
     /**
