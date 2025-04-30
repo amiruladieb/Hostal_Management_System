@@ -181,7 +181,7 @@ public class registration extends javax.swing.JFrame {
             new LogIn().setVisible(true);
         }
         catch (Exception e) {
-            
+            JOptionPane.showMessageDialog(null, "Something went wrong! Please try again");
         }
     }//GEN-LAST:event_createButtonActionPerformed
 
