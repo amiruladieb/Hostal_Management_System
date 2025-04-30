@@ -170,6 +170,11 @@ public class registration extends javax.swing.JFrame {
             String email = emailField.getText();
             String securityQ = (String) securityQComboBox.getSelectedItem();
             String answer = answerField.getText();
+            
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "");
+            Statement st = con.createStatement();
         }
         catch (Exception e) {}
     }//GEN-LAST:event_createButtonActionPerformed
