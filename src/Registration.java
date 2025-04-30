@@ -17,6 +17,7 @@ public class Registration extends javax.swing.JFrame {
      */
     public Registration() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
