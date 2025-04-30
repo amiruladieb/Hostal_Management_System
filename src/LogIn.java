@@ -61,6 +61,11 @@ public class LogIn extends javax.swing.JFrame {
         forgotPasswordButton.setText("Forgot Password");
 
         registerButton.setText("Create new account");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -149,6 +154,12 @@ public class LogIn extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error in Connection");
         }
     }//GEN-LAST:event_logInButtonActionPerformed
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Registration().setVisible(true);
+    }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
      * @param args the command line arguments
