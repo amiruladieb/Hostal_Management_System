@@ -172,14 +172,21 @@ public class Registration extends javax.swing.JFrame {
             String securityQ = (String) securityQComboBox.getSelectedItem();
             String answer = answerField.getText();
             
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "");
-            Statement st = con.createStatement();
-            st.executeUpdate("insert into student (username, name, mobileno, password, email, securityQ, answer) values('"+username+"','"+name+"','"+mobileno+"','"+password+"','"+email+"','"+securityQ+"','"+answer+"')");
-            JOptionPane.showMessageDialog(null, "Thanks for registration");
-            setVisible(false);
-            new LogIn().setVisible(true);
+            if (usernameField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Username cannot be empty");
+            }
+            else if (passwordField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Password cannot be empty");
+            }
+            else {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "");
+                Statement st = con.createStatement();
+                st.executeUpdate("insert into student (username, name, mobileno, password, email, securityQ, answer) values('"+username+"','"+name+"','"+mobileno+"','"+password+"','"+email+"','"+securityQ+"','"+answer+"')");
+                JOptionPane.showMessageDialog(null, "Thanks for registration");
+                setVisible(false);
+                new LogIn().setVisible(true);
+            }
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Something went wrong! Please try again");
