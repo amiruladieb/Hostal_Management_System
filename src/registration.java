@@ -1,3 +1,5 @@
+import java.sql.*;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,7 +38,7 @@ public class registration extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
         nameField = new javax.swing.JTextField();
-        mobileNumberField = new javax.swing.JTextField();
+        mobilenoField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
         emailField = new javax.swing.JTextField();
         securityQComboBox = new javax.swing.JComboBox<>();
@@ -99,7 +101,7 @@ public class registration extends javax.swing.JFrame {
                         .addComponent(backButton))
                     .addComponent(usernameField)
                     .addComponent(nameField)
-                    .addComponent(mobileNumberField)
+                    .addComponent(mobilenoField)
                     .addComponent(passwordField)
                     .addComponent(emailField)
                     .addComponent(securityQComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -120,7 +122,7 @@ public class registration extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(mobileNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mobilenoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -160,7 +162,15 @@ public class registration extends javax.swing.JFrame {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
-        try {}
+        try {
+            String username = usernameField.getText();
+            String name = nameField.getText();
+            String mobileno = mobilenoField.getText();
+            String password = passwordField.getText();
+            String email = emailField.getText();
+            String securityQ = (String) securityQComboBox.getSelectedItem();
+            String answer = answerField.getText();
+        }
         catch (Exception e) {}
     }//GEN-LAST:event_createButtonActionPerformed
 
@@ -212,7 +222,7 @@ public class registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField mobileNumberField;
+    private javax.swing.JTextField mobilenoField;
     private javax.swing.JTextField nameField;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JComboBox<String> securityQComboBox;
