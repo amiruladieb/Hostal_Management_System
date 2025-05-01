@@ -189,10 +189,15 @@ public class Forgot extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("select * from student where username='"+username+"' and answer='"+answer+"'");
             
             if (rs.next()) {
-                st.executeUpdate("update student set password='"+newPassword+"' where username='"+username+"' and answer='"+answer+"'");
-                JOptionPane.showMessageDialog(null, "Your Password is successfully updated");
-                setVisible(false);
-                new LogIn().setVisible(true);
+                if (newPasswordField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "New Password cannot be empty");
+                }
+                else {
+                    st.executeUpdate("update student set password='"+newPassword+"' where username='"+username+"' and answer='"+answer+"'");
+                    JOptionPane.showMessageDialog(null, "Your Password is successfully updated");
+                    setVisible(false);
+                    new LogIn().setVisible(true);
+                }
             }
             else {
                 JOptionPane.showMessageDialog(null, "Please write correct Username or Answer");
