@@ -1,3 +1,5 @@
+import java.sql.*;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +18,7 @@ public class Forgot extends javax.swing.JFrame {
     public Forgot() {
         initComponents();
         setLocationRelativeTo(null);
+        securityQField.setEditable(false);
     }
 
     /**
@@ -59,10 +62,20 @@ public class Forgot extends javax.swing.JFrame {
         jLabel5.setText("New Password");
 
         saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         backButton.setText("Back");
 
         searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,6 +147,61 @@ public class Forgot extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        String username = usernameField.getText();
+        
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select securityQ from student where username='"+username+"'");
+            
+            if (rs.next()) {
+                securityQField.setText(rs.getString(1));
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Please write correct Username");
+            }
+            
+            con.close();
+            rs.close();
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error in connection");
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // TODO add your handling code here:
+        String username = usernameField.getText();
+        String newPassword = newPasswordField.getText();
+        String securityQ = securityQField.getText();
+        String answer = answerField.getText();
+        
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from student where username='"+username+"' and answer='"+answer+"'");
+            
+            if (rs.next()) {
+                st.executeUpdate("update student set password='"+newPassword+"' where username='"+username+"' and answer='"+answer+"'");
+                JOptionPane.showMessageDialog(null, "Your Password is successfully updated");
+                setVisible(false);
+                new LogIn().setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Please write correct Username or Answer");
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error in connection");
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
      * @param args the command line arguments
