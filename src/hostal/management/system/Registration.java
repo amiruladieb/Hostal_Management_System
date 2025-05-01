@@ -1,3 +1,5 @@
+package hostal.management.system;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 /*
@@ -79,6 +81,11 @@ public class Registration extends javax.swing.JFrame {
         });
 
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -192,6 +199,12 @@ public class Registration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Something went wrong! Please try again");
         }
     }//GEN-LAST:event_createButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new LogIn().setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,3 +1,5 @@
+package hostal.management.system;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 /*
@@ -69,6 +71,11 @@ public class Forgot extends javax.swing.JFrame {
         });
 
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -207,6 +214,12 @@ public class Forgot extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error in connection");
         }
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new LogIn().setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments

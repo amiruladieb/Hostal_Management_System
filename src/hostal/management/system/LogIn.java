@@ -1,3 +1,5 @@
+package hostal.management.system;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 /*
@@ -60,6 +62,11 @@ public class LogIn extends javax.swing.JFrame {
         jLabel3.setText("Hostel Management System");
 
         forgotPasswordButton.setText("Forgot Password");
+        forgotPasswordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forgotPasswordButtonActionPerformed(evt);
+            }
+        });
 
         registerButton.setText("Create new account");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +168,12 @@ public class LogIn extends javax.swing.JFrame {
         setVisible(false);
         new Registration().setVisible(true);
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void forgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotPasswordButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Forgot().setVisible(true);
+    }//GEN-LAST:event_forgotPasswordButtonActionPerformed
 
     /**
      * @param args the command line arguments
